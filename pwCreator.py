@@ -1,53 +1,54 @@
+import string
+import random
+
 #Password Creator v1.0.
 #David Fernando Ordoñez Pérez - dordonezpe
 #20Nov21
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-# TASKS: 
-# [x] Create the basic (rudimentary) idea of how it works. 
-# [x] Change a string to list.
-# [x] Change list to string. Return with @ symbol.
-
-# FEEDBACK: 
-# You can always find the answer if you search for it.
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
 #There's no supervillian without a presentation
-print("____________________________________________________________________________")
-print("\n\t\tWelcome to the Password Creator program")
-print("____________________________________________________________________________")
-print("\nPlease, enter a phrase ")
-userPhrase = input(": ")
-phrase = userPhrase.lower()
-phrase = phrase.strip()
+def presentation(): 
+    global phrase
+    print("____________________________________________________________________________")
+    print("\n\t\tWelcome to the Password Creator program")
+    print("____________________________________________________________________________")
+    print("\nPlease, enter a phrase ")
+    userPhrase = input(": ")
+    phrase = userPhrase.lower()
+    phrase = phrase.strip()
+presentation()
 
 #Change string to list
 def split(word):
     global lettersList
     lettersList = [char for char in word]
     return lettersList
+print(split(phrase))
 
 #Change list to string
 def listToString(wordList): 
     listToStr = "@"
     listToStr += ''.join(str(element) for element in wordList)
     return listToStr
+print(listToString(lettersList))
 
 #21Nov21
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-# TASKS: 
-# [] Create the Atbash and A1z26 cypher in a list. 
-# [] .
-# [] .
+def createAlphabets(): 
+    alphabet = list(string.ascii_lowercase)
+    
+    atbash = alphabet[:-1]
+    atbash.reverse
 
-# FEEDBACK: 
-# .
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+    a1z26 = []
+    [a1z26.append(number+1) for number in range(0, 26)]
+createAlphabets()
 
-
-
-
-
+randomNumber = random.randint(0, 26)
+print(randomNumber)
 
 
-#C:\Users\David Ordoñez\Desktop\CodingPrograms
+
+
+
+
+
+#C:\Users\David Ordoñez\Desktop\CodingPrograms\Password Creator
