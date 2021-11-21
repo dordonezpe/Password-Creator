@@ -24,28 +24,48 @@ def split(word):
     return lettersList
 print(split(phrase))
 
+#21Nov21
+def createAlphabets(): 
+    global atbash, a1z26, alphabet
+    alphabet = list(string.ascii_lowercase)
+    
+    atbash = alphabet[:]
+    atbash.reverse()
+    a1z26 = []
+    [a1z26.append(number+1) for number in range(0, 26)]
+createAlphabets()
+
+finalList = []
+i = lettersList #New
+print(i)
+print()
+for letter in lettersList:   #lettersList = k, a, l, o, s, k, a, g...
+    letterInAlphabet = alphabet.index(letter)
+    indexNumber = letterInAlphabet+1 #Position - number in lettersList: 1, 2, 3, 4, 5...
+    randomLetterNumber = random.randint(0, 1) #Create a value: 0 or 1
+    
+    print(f'IndexNumber: {indexNumber}')
+    print(f'random Letter Number: {randomLetterNumber}')
+        #Assign a letter
+    if randomLetterNumber == 0:      
+        letterNumberToAssign = atbash[indexNumber-1]
+        print(f'letterNumbertoAssign: {letterNumberToAssign}')
+        #Assign a number
+    if randomLetterNumber == 1:      
+        letterNumberToAssign = a1z26[indexNumber-1]
+        print(f'letterNumbertoAssign: {letterNumberToAssign}')
+    
+    print()
+        
+    finalList.append(str(letterNumberToAssign))
+    print(f'finalList: {finalList}')
+        
 #Change list to string
 def listToString(wordList): 
     listToStr = "@"
     listToStr += ''.join(str(element) for element in wordList)
     return listToStr
-print(listToString(lettersList))
-
-#21Nov21
-def createAlphabets(): 
-    alphabet = list(string.ascii_lowercase)
-    
-    atbash = alphabet[:-1]
-    atbash.reverse
-
-    a1z26 = []
-    [a1z26.append(number+1) for number in range(0, 26)]
-createAlphabets()
-
-randomNumber = random.randint(0, 26)
-print(randomNumber)
-
-
+print(listToString(finalList))
 
 
 
