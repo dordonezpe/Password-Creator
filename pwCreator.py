@@ -14,7 +14,7 @@ def presentation():
     print("\nPlease, enter a phrase ")
     userPhrase = input(": ")
     phrase = userPhrase.lower()
-    phrase = phrase.strip()
+    phrase = phrase.replace(" ", "")
 presentation()
 
 #Change string to list
