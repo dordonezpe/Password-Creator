@@ -16,7 +16,7 @@ def createAlphabets():
 createAlphabets()
 
 #2. There's no supervillian without a presentation
-def menuPresentation(): 
+def presentation(): 
         global phrase
         print("____________________________________________________________________________")
         print("\n\t\tWelcome to the Password Creator program")
@@ -26,7 +26,7 @@ def menuPresentation():
         phrase = userPhrase.lower()
         phrase = phrase.replace(" ", "")
         phrase = phrase.replace("ñ", "n")
-menuPresentation()
+presentation()
 
 #3. Change string to list
 def split(word):
@@ -42,7 +42,7 @@ def processCore():
     i = lettersList #Take the value of the list of characters from the phrase
 
     for letter in lettersList:   #lettersList = k, a, l, o, s, k, a, g...
-        letterInAlphabet = alphabet.index(letter) #Search the letter in the alphabet
+        letterInAlphabet = alphabet.index(letter) #Search the position in the alphabet
         indexNumber = letterInAlphabet+1 #Position - number in lettersList: 1, 2, 3, 4, 5...
         
         randomLetter_Number = random.randint(0, 1) #Create a value: 0 or 1
@@ -50,7 +50,7 @@ def processCore():
         #print(f'IndexNumber: {indexNumber}')
         #print(f'random Letter Number: {randomLetter_Number}')
         #a. Assign a letter
-        if randomLetter_Number == 0:      
+        if randomLetter_Number == 0:   
             letterNumberToAssign = atbash[indexNumber-1] #Assign a letter to the letter in letterList
             #print(f'letterNumbertoAssign: {letterNumberToAssign}')
         #b. Assign a number
