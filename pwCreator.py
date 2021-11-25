@@ -24,8 +24,9 @@ def presentation():
         print("\nPlease, enter a phrase ")
         userPhrase = input(": ")
         phrase = userPhrase.lower()
-        phrase = phrase.replace(" ", "")
+        #phrase = phrase.replace(" ", "")
         phrase = phrase.replace("ñ", "n")
+        print("phrase: " + phrase)
 presentation()
 
 #3. Change string to list
@@ -33,7 +34,7 @@ def split(word):
     global lettersList
     lettersList = [char for char in word]
     return lettersList
-split(phrase)
+print(split(phrase))
 
 #4. Whole process!
 def processCore():
@@ -42,33 +43,48 @@ def processCore():
     i = lettersList #Take the value of the list of characters from the phrase
 
     for letter in lettersList:   #lettersList = k, a, l, o, s, k, a, g...
-        letterInAlphabet = alphabet.index(letter) #Search the position in the alphabet
-        indexNumber = letterInAlphabet+1 #Position - number in lettersList: 1, 2, 3, 4, 5...
-        
+        #print()
+        if letter.isspace(): #True
+            pass
+        else:
+            letterInAlphabet = alphabet.index(letter) #Search the position in the alphabet
+            indexNumber = letterInAlphabet+1 #Position - number in lettersList: 1, 2, 3, 4, 5...
         randomLetter_Number = random.randint(0, 1) #Create a value: 0 or 1
-        
-        #print(f'IndexNumber: {indexNumber}')
-        #print(f'random Letter Number: {randomLetter_Number}')
+        #print(f"random number / letter: {randomLetter_Number}")
+
         #a. Assign a letter
         if randomLetter_Number == 0:   
-            letterNumberToAssign = atbash[indexNumber-1] #Assign a letter to the letter in letterList
-            #print(f'letterNumbertoAssign: {letterNumberToAssign}')
+        #   print("Reverse letter")
+            if letter.isspace(): 
+                letterNumberToAssign = "+"
+        #        print("Letter is space")
+            else:
+                letterNumberToAssign = atbash[indexNumber-1] #Assign a letter to the letter in letterList
+        #        print(f'letterNumbertoAssign {letter}: {letterNumberToAssign}')
         #b. Assign a number
-        if randomLetter_Number == 1:      
-            letterNumberToAssign = a1z26[indexNumber-1] #Assign a number to the letter in letterList
-            #print(f'letterNumbertoAssign: {letterNumberToAssign}')
-            
+        if randomLetter_Number == 1:     
+        #    print("Number") 
+            if letter.isspace(): 
+                letterNumberToAssign = "+"
+        #        print("Letter is space")
+            else: 
+                letterNumberToAssign = a1z26[indexNumber-1] #Assign a number to the letter in letterList
+        #        print(f'letterNumbertoAssign {letter}: {letterNumberToAssign}')
+        
         finalList.append(str(letterNumberToAssign))
-        #print(f'finalList: {finalList}')
+        print(f'finalList: {finalList}')
 processCore()
 
 #5. Change list to string
 def listToString(wordList): 
-    listToStr = "@"
+       
+    finalList.insert(0, "@")
+    listToStr = ""
     listToStr += ''.join(str(element) for element in wordList)
     return listToStr
 
 while True: 
+    
     #6. Answer to the user
     def answer(): 
         print(f"Here's your password: ")
