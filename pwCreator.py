@@ -4,26 +4,7 @@ import random
 #Password Creator v1.0.
 #David Fernando Ordoñez Pérez - dordonezpe
 
-#There's no supervillian without a presentation
-def presentation(): 
-    global phrase
-    print("____________________________________________________________________________")
-    print("\n\t\tWelcome to the Password Creator program")
-    print("____________________________________________________________________________")
-    print("\nPlease, enter a phrase ")
-    userPhrase = input(": ")
-    phrase = userPhrase.lower()
-    phrase = phrase.replace(" ", "")
-presentation()
-
-#Change string to list
-def split(word):
-    global lettersList
-    lettersList = [char for char in word]
-    return lettersList
-#printsplit(phrase))
-split(phrase)
-
+#1. Creates the alphabets
 def createAlphabets(): 
     global atbash, a1z26, alphabet
     alphabet = list(string.ascii_lowercase)
@@ -34,7 +15,27 @@ def createAlphabets():
     [a1z26.append(number+1) for number in range(0, 26)]
 createAlphabets()
 
-#Whole process
+#2. There's no supervillian without a presentation
+def menuPresentation(): 
+        global phrase
+        print("____________________________________________________________________________")
+        print("\n\t\tWelcome to the Password Creator program")
+        print("____________________________________________________________________________")
+        print("\nPlease, enter a phrase ")
+        userPhrase = input(": ")
+        phrase = userPhrase.lower()
+        phrase = phrase.replace(" ", "")
+        phrase = phrase.replace("ñ", "n")
+menuPresentation()
+
+#3. Change string to list
+def split(word):
+    global lettersList
+    lettersList = [char for char in word]
+    return lettersList
+split(phrase)
+
+#4. Whole process!
 def processCore():
     global finalList
     finalList = []
@@ -60,16 +61,35 @@ def processCore():
         finalList.append(str(letterNumberToAssign))
         #print(f'finalList: {finalList}')
 processCore()
- 
-#Change list to string
+
+#5. Change list to string
 def listToString(wordList): 
     listToStr = "@"
     listToStr += ''.join(str(element) for element in wordList)
     return listToStr
 
-print(f"Here's your password: ")
-print(listToString(finalList))
+while True: 
+    #6. Answer to the user
+    def answer(): 
+        print(f"Here's your password: ")
+        print(listToString(finalList))
+    answer()
+        
+    print("\nWould you like to refresh the password?")
+    option = input("Enter yes or no: ")
+    option = option.lower()
+    option.replace(" ", "")
 
+    if option == "yes" or option == "y": 
+        processCore()
+        continue
+    elif option == "no" or option == "n": 
+        break
+    else: 
+        print("Invalid option")
+        continue
+    
+print("\nThank you for use our program!")
 
 
 
