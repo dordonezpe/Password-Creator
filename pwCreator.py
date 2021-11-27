@@ -56,7 +56,7 @@ def processCore():
         if randomLetter_Number == 0:   
         #   print("Reverse letter")
             if letter.isspace(): 
-                letterNumberToAssign = "+"
+                letterNumberToAssign = " "
         #        print("Letter is space")
             else:
                 letterNumberToAssign = atbash[indexNumber-1] #Assign a letter to the letter in letterList
@@ -65,7 +65,7 @@ def processCore():
         if randomLetter_Number == 1:     
         #    print("Number") 
             if letter.isspace(): 
-                letterNumberToAssign = "+"
+                letterNumberToAssign = " "
         #        print("Letter is space")
             else: 
                 letterNumberToAssign = a1z26[indexNumber-1] #Assign a number to the letter in letterList
@@ -77,10 +77,10 @@ processCore()
 
 #5. Change list to string
 def listToString(wordList): 
-       
     finalList.insert(0, "@")
     listToStr = ""
     listToStr += ''.join(str(element) for element in wordList)
+    listToStr.capitalize()
     return listToStr
 
 while True: 
@@ -110,5 +110,4 @@ print("\nThank you for use our program!")
 
 
 
-
-#C:\Users\David Ordoñez\Desktop\CodingPrograms\Password Creator
+#C:\Users\David Ordoñez\Desktop\Software Pillar\CodingPrograms\Password Creator
