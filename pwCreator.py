@@ -80,7 +80,6 @@ def listToString(wordList):
     finalList.insert(0, "@")
     listToStr = ""
     listToStr += ''.join(str(element) for element in wordList)
-    listToStr.capitalize()
     return listToStr
 
 while True: 
